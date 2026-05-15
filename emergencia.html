@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergência - Conecta Patas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="emergencia.js" defer></script>
+</head>
+
+<body class="emergency-page">
+    <!-- BOTÃO DE EMERGÊNCIA FLUTUANTE (escondido nesta página) -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-paw"></i>
+                <h1>Conecta Patas</h1>
+            </div>
+          <!--Filtro de busca -->
+            <div class="search-bar">
+                <input type="text" id="search-ongs" placeholder="Buscar ONGs por cidade...">
+                <button id="btn-search"><i class="fas fa-search"></i></button>
+            </div>
+            <!--Menu -->
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="animais.html">Animais</a></li>
+                    <li><a href="ongs.html">ONGs</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    </li>
+                    <li class="auth-buttons">
+                        <a href="login.html" class="btn-login">Entrar</a>
+                        <a href="cadastro_usuario.html" class="btn-cadastro">Cadastrar</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+     <!--emergência-->
+    <main>
+        <div class="emergency-container">
+            <div class="emergency-header">
+                <i class="fas fa-exclamation-triangle emergency-icon"></i>
+                <h1>ATENDIMENTO DE EMERGÊNCIA</h1>
+                <p>Se um animal sofreu um acidente ou está doente, acione nossa rede de apoio imediatamente</p>
+            </div>
+
+            <div class="emergency-form-container">
+                <form id="emergencyForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-paw"></i> Tipo de animal:</label>
+                            <select id="emergencyTipo" required>
+                                <option value="">Selecione...</option>
+                                <option value="cachorro">Cachorro</option>
+                                <option value="gato">Gato</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-exclamation-circle"></i> Nível de urgência:</label>
+                            <select id="emergencyUrgencia" required>
+                                <option value="">Selecione...</option>
+                                <option value="critico">Crítico (risco de vida)</option>
+                                <option value="urgente">Urgente (precisa de atendimento rápido)</option>
+                                <option value="moderado">Moderado (pode aguardar)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Localização do animal:</label>
+                        <input type="text" id="emergencyLocal" placeholder="Digite o endereço" required>
+                        <button type="button" id="btnLocalizacao" class="btn-secondary btn-small">
+                            <i class="fas fa-location-dot"></i> Compartilhar localização
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-notes-medical"></i> Descrição do ocorrido:</label>
+                        <textarea id="emergencyDescricao" rows="4"
+                            placeholder="Descreva o que aconteceu, sintomas, etc." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-camera"></i> Fotos (opcional):</label>
+                        <input type="file" id="emergencyFotos" accept="image/*" multiple>
+                    </div>
+
+                    <div class="emergency-contacts" id="emergencyContacts">
+                        <h3><i class="fas fa-sync-alt fa-spin"></i> Buscando profissionais disponíveis...</h3>
+                        <div class="contact-loading">
+                            <i class="fas fa-spinner fa-spin"></i> Aguarde, procurando ajuda num raio de 10km
+                        </div>
+                    </div>
+
+                    <div id="emergencyResultado" class="error"></div>
+
+                    <button type="submit" class="btn-emergency" id="btnEmergencia">
+                        <i class="fas fa-bell"></i> ACIONAR REDE DE EMERGÊNCIA
+                    </button>
+                </form>
+
+                <div class="emergency-info">
+                    <h3><i class="fas fa-info-circle"></i> Como funciona?</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle" style="color: green;"></i> Seu alerta será enviado para
+                            veterinários e ONGs num raio de 10km</li>
+                        <li><i class="fas fa-check-circle" style="color: green;"></i> Quem estiver disponível irá
+                            aceitar o chamado</li>
+                        <li><i class="fas fa-check-circle" style="color: green;"></i> Você verá em tempo real quem está
+                            vindo ajudar</li>
+                        <li><i class="fas fa-check-circle" style="color: green;"></i> O atendimento é voluntário -
+                            combinem valores diretamente</li>
+                    </ul>
+
+                    <div class="emergency-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <strong>Dicas de primeiros socorros:</strong>
+                            <p>Mantenha o animal aquecido, evite movimentos bruscos e não ofereça alimentos ou água se
+                                não tiver certeza.</p>
+                        </div>
+                    </div>
+
+                    <div class="emergency-contacts-list" id="emergencyContactsList" style="display: none;">
+                        <h4>Profissionais disponíveis:</h4>
+                        <div class="professional-list">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-paw"></i> Conecta Patas</h4>
+                <p>Transformando vidas através da conexão entre pessoas e animais</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="animais.html">Animais para adoção</a></li>
+                    <li><a href="ongs.html">ONGs parceiras</a></li>
+                    <li><a href="doacoes.html">Como doar</a></li>
+                    <li><a href="denuncias.html">Denúncias</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@conectapatas.org</p>
+                <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 - Conecta Patas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+
+</html>

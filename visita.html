@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta Patas - Sistema de Adoção</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="visita.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-paw"></i>
+                <h1>Conecta Patas</h1>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="search-ongs" placeholder="Buscar ONGs por cidade...">
+                <button id="btn-search"><i class="fas fa-search"></i></button>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="animais.html">Animais</a></li>
+                    <li><a href="ongs.html">ONGs</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    </li>
+                    <li class="auth-buttons">
+                        <a href="login.html" class="btn-login">Entrar</a>
+                        <a href="cadastro_usuario.html" class="btn-cadastro">Cadastrar</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-header">
+            <h2><i class="fas fa-calendar-alt"></i> Agendamento de Visitas</h2>
+            <p>Agende uma visita para conhecer seu futuro amigo</p>
+        </section>
+
+        <div class="visitas-container">
+            <!-- FORMULÁRIO DE AGENDAMENTO -->
+            <div class="visitas-form-box">
+                <h3><i class="fas fa-plus-circle"></i> Nova Visita</h3>
+                <form id="formAgendamento">
+                    <div class="form-group">
+                        <label><i class="fas fa-paw"></i> Animal de interesse:</label>
+                        <select id="animalSelect" required>
+                            <option value="">Selecione um animal...</option>
+                            <option value="Peludo">Peludo - Cachorro (2 anos)</option>
+                            <option value="Mimi">Mimi - Gata (1 ano)</option>
+                            <option value="Paquita">Paquita - Cachorro (3 anos)</option>
+                            <option value="Nonato">Nonato - Cachorro (2 anos)</option>
+                            <option value="Tigre">Tigre - Cachorro (3 anos)</option>
+                            <option value="Mia">Mia - Gata (2 anos)</option>
+                            <option value="Mel">Mel - Gata (3 anos)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-building"></i> ONG:</label>
+                        <select id="ongSelect" required>
+                            <option value="">Selecione uma ONG...</option>
+                            <option value="Amor Animal">ONG Amor Animal - São Paulo, SP</option>
+                            <option value="Patas Amadas">ONG Patas Amadas - Rio de Janeiro, RJ</option>
+                            <option value="Lar Animal">ONG Lar Animal - Belo Horizonte, MG</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar-day"></i> Data:</label>
+                            <input type="date" id="dataVisita" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-clock"></i> Horário:</label>
+                            <select id="horaVisita" required>
+                                <option value="">Selecione...</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-user-friends"></i> Número de pessoas:</label>
+                        <input type="number" id="pessoas" min="1" max="4" value="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-comment"></i> Observações:</label>
+                        <textarea id="observacoes" rows="3" placeholder="Alguma informação relevante?"></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox">
+                            <input type="checkbox" id="termos" required>
+                            <span>Li e concordo com as <a href="#">regras de visitação</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-agendar">Agendar Visita</button>
+                </form>
+            </div>
+
+            <!-- LISTA DE VISITAS AGENDADAS -->
+            <div class="visitas-lista-box">
+                <h3><i class="fas fa-list"></i> Minhas Visitas</h3>
+                <div id="listaVisitas" class="visitas-lista">
+                    <!-- As visitas serão carregadas via JavaScript -->
+                    <div class="sem-visitas">
+                        <i class="fas fa-calendar-times"></i>
+                        <p>Nenhuma visita agendada</p>
+                        <span>Agende sua primeira visita acima</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFORMAÇÕES-->
+        <section class="info-visitas">
+            <h3><i class="fas fa-info-circle"></i> Informações Importantes</h3>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Localização</h4>
+                    <p>Rua dos Animais, 123 - São Paulo/SP</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h4>Horário de visitas</h4>
+                    <p>Terça a Domingo: 10h às 17h</p>
+                    <p>Segunda: Fechado</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Documentos necessários</h4>
+                    <p>• Documento de identidade com foto</p>
+                    <p>• Comprovante de residência</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-paw"></i> Conecta Patas</h4>
+                <p>Transformando vidas através da conexão entre pessoas e animais</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="animais.html">Animais para adoção</a></li>
+                    <li><a href="ongs.html">ONGs parceiras</a></li>
+                    <li><a href="doacoes.html">Como doar</a></li>
+                    <li><a href="denuncias.html">Denúncias</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@conectapatas.org</p>
+                <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 - Conecta Patas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+
+</html>

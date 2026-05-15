@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Conecta Patas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="contato.js" defer></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-paw"></i>
+        <h1>Conecta Patas</h1>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="search-ongs" placeholder="Buscar ONGs por cidade...">
+        <button id="btn-search"><i class="fas fa-search"></i></button>
+      </div>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" >Início</a></li>
+          <li><a href="animais.html">Animais</a></li>
+          <li><a href="ongs.html">ONGs</a></li>
+          <li><a href="contato.html" class="active">Contato</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          </li>
+          <li class="auth-buttons">
+            <a href="login.html" class="btn-login">Entrar</a>
+            <a href="cadastro_usuario.html" class="btn-cadastro">Cadastrar</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2><i class="fas fa-envelope"></i> Fale Conosco</h2>
+    <p style="text-align: center; margin-bottom: 20px;">Tem alguma dúvida? Entre em contato conosco!</p>
+
+    <form id="formContato">
+      <label for="nomeContato">Nome <span style="color: red;">*</span>:</label>
+      <input type="text" id="nomeContato" placeholder="Seu nome completo" required>
+
+      <label for="emailContato">Email <span style="color: red;">*</span>:</label>
+      <input type="email" id="emailContato" placeholder="seu@email.com" required>
+
+      <label for="mensagemContato">Mensagem <span style="color: red;">*</span>:</label>
+      <textarea id="mensagemContato" rows="6" placeholder="Escreva sua mensagem" required></textarea>
+
+      <div id="resultadoContato" class="error"></div>
+
+      <button type="submit">Enviar Mensagem</button>
+      <button type="button" id="btnLimparContato" class="btn-limpar">Limpar Campos</button>
+    </form>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4><i class="fas fa-paw"></i> Conecta Patas</h4>
+        <p>Transformando vidas através da conexão entre pessoas e animais</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Links Rápidos</h4>
+        <ul>
+          <li><a href="animais.html">Animais para adoção</a></li>
+          <li><a href="ongs.html">ONGs parceiras</a></li>
+          <li><a href="doaçoes.html">Como doar</a></li>
+          <li><a href="denuncias.html">Denúncias</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contato</h4>
+        <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+        <p><i class="fas fa-envelope"></i> contato@conectapatas.org</p>
+        <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 - Conecta Patas. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
+</body>
+
+</html>
